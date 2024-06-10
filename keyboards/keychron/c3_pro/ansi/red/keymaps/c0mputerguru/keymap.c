@@ -161,3 +161,12 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
         return true;
     return false;
 }
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    if(layer_state_cmp(state, WIN_BASE)) {
+        autoshift_disable();
+    } else {
+        autoshift_enable();
+    }
+    return state;
+}
